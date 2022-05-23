@@ -11,7 +11,7 @@ using WebApiCasino;
 namespace WebApiCasino.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220522033640_Inicial")]
+    [Migration("20220522202248_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,9 @@ namespace WebApiCasino.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 
